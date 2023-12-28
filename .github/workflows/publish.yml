@@ -38,7 +38,7 @@ jobs:
     - name: Log into Docker Hub
       uses: docker/login-action@v2
       with:
-        username: jordanpotter
+        username: moritzchow
         password: ${{ secrets.DOCKERHUB_ACCESS_TOKEN }}
 
     - name: Log into GitHub Container Registry
@@ -53,7 +53,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: |
-          jordanpotter/docker-mods
+          moritzchow/docker-mods
           ghcr.io/${{ github.repository }}
         tags: |
           ${{ matrix.mod }}

@@ -21,12 +21,6 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Get current time
-      id: current-time
-      uses: josStorer/get-current-time@v2
-      with:
-        format: YYYYMMDDhhmmss
-
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v2
 
@@ -44,9 +38,6 @@ jobs:
       with:
         file: ${{ matrix.mod }}/Dockerfile
         context: ${{ matrix.mod }}
-        tags: ${{ steps.metadata.outputs.tags }}
-        labels: ${{ steps.metadata.outputs.labels }}
+        tags: moritzchow318/docker-mods:transmission-nat-pmp
         platforms: linux/amd64,linux/arm64,linux/arm/v6,linux/arm/v7
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
         push: true
